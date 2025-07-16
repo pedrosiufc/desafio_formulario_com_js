@@ -1,0 +1,54 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 402px;
+    padding-left: 10px;
+    background-image: url('/src/images/fundo-background.jpg');
+    background-repeat: repeat-x;
+    gap: 80px;
+}
+
+
+.aviso{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 111px;    
+
+}
+
+.formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 340px;
+    height: 378px;
+  
+    background-color: #fff;
+}
+
+h1{
+    font-size: 1.2rem;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+p{
+    font-size: 0.8rem;
+    color: white;
+}

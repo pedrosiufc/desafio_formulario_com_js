@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criação de Formulário com JS</title>
     <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/style.css">    
+    <link rel="stylesheet" href="./src/css/style.css">
 </head>
-
 <body>
     <main class="container">
 
         <div class="aviso">
             <h1>Ficou com dúvida? <br> nos mande uma mensagem!</h1>
             <p>Caso tenha ficado com qualquer dúvida basta nos mandar uma menssagem e entraremos em contato em menos
-            de 24h.</p>
-           
+                de 24h.</p>
         </div>
-        <div class="formulario"></div>
-
+        <div class="formulario">
+            <form class="form">
+                <input type="text" id="nome" placeholder="Nome" required>
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="tel" id="telefone" placeholder="Telefone" required>
+                <textarea id="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+                <p class="descricao">*campos obrigatórios</p>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
     </main>
 </body>
-
 </html>

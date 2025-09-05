@@ -21,9 +21,11 @@
                 <input type="text" class="input-text" placeholder="Nome" required>
                 <input type="email" class="input-text" placeholder="E-mail" required>
                 <input type="tel" class="input-text" placeholder="Telefone" required>
-                <textarea id="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+                <!--adicionando a classe input text para criar uma array único para as validações dos campos-->
+                <textarea id="mensagem"
+                class="input-text" placeholder="Mensagem" rows="4" required></textarea>
                 <p class="descricao">*campos obrigatórios</p>
-                <button type="submit">Enviar</button>
+                <button id="submit" class="button-submit">Enviar</button>
             </form>
         </div>
     </main>

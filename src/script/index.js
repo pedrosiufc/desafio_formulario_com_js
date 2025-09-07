@@ -7,6 +7,7 @@ const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
 botaoDoFormulario.addEventListener('click', (enviarForms) => {
     enviarForms.preventDefault();
     enviarFormulario();
+    informarCamposObrigatorios();
 });
 
 //agora vamos percorrer os inputs
@@ -26,6 +27,8 @@ function verificarSeFoiPreenchido(){
     informacoesUsuario.forEach((inputs) => {
         //testando a validão dos campos recebendo os inputs
         validarCampo(inputs);
+        informarCamposObrigatorios(inputs);
+
     });
 }
 
@@ -52,4 +55,15 @@ function validarCampo(input) {
     input.classList.add("campo-nao-preenchido");
     input.classList.remove("campo-preenchido");
   }
+}
+
+// Exibe ou oculta mensagem de erro via nextElementSibling
+function informarCamposObrigatorios(input) {
+    const aviso = input.nextElementSibling; // pega o span de erro
+    if (!aviso) return; // se não houver span, sai
+    if (input.value.trim() === '') {
+        aviso.style.display = 'block'; // mostra o erro
+    } else {
+        aviso.style.display = 'none';  // esconde o erro
+    }
 }

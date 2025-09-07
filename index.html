@@ -19,11 +19,15 @@
         <div class="formulario">
             <form class="form">
                 <input type="text" class="input-text" placeholder="Nome" required>
+                <span class="error">O campo nome deve estar preenchido</span>
                 <input type="email" class="input-text" placeholder="E-mail" required>
+                <span class="error">O campo email deve estar preenchido</span>
                 <input type="tel" class="input-text" placeholder="Telefone" required>
                 <!--adicionando a classe input text para criar uma array único para as validações dos campos-->
+                <span class="error">O campo némero de telefone deve estar preenchido</span>
                 <textarea id="mensagem"
                 class="input-text" placeholder="Mensagem" rows="4" required></textarea>
+                <span class="error">Deve se escrever uma mensagem.</span>
                 <p class="descricao">*campos obrigatórios</p>
                 <button id="submit" class="button-submit">Enviar</button>
             </form>
@@ -31,4 +35,4 @@
     </main>
     <script src="./src/script/index.js"></script>
 </body>
-</html>
+</ht

@@ -7,63 +7,70 @@ const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
 botaoDoFormulario.addEventListener('click', (enviarForms) => {
     enviarForms.preventDefault();
     enviarFormulario();
-    informarCamposObrigatorios();
 });
 
 //agora vamos percorrer os inputs
 informacoesUsuario.forEach((input) => {
-//aqui colocamos um addEventListener e colocamos o evento de input
-//É uma coleção de elementos de formulário (NodeList ou Array) que pegará o input inclusive o textArea que está dentro de input-text () => {}.
-input.addEventListener("input", () => {});
+  input.addEventListener("input", () => {
+    validarCampo(input);
+  });
 });
 
 function enviarFormulario(){
-    //chamando a verificação se os campos forão preenchidos
-    verificarSeFoiPreenchido();
+  //chamando a verificação se os campos foram preenchidos
+  verificarSeFoiPreenchido();
 }
 
 function verificarSeFoiPreenchido(){
-    //percorre o array de informações dos campos
-    informacoesUsuario.forEach((inputs) => {
-        //testando a validão dos campos recebendo os inputs
-        validarCampo(inputs);
-        informarCamposObrigatorios(inputs);
-
-    });
+  //percorre o array de informações dos campos
+  informacoesUsuario.forEach((input)=>{
+    validarCampo(input);
+  });
 }
 
-function validarCampo(input) {
+function validarCampo(input){
   const valor = input.value.trim();
 
-  // Se o campo for de tipo "email" faz a verificação de formato
-  if (input.type === "email") {
-    if (emailRegex.test(valor)) {
+  // se o campo for tipo "email" faz a verificação de formato
+  if(input.type === "email"){
+    if(emailRegex.test(valor) && valor !== ""){
+      // email válido
       input.classList.add("campo-preenchido");
       input.classList.remove("campo-nao-preenchido");
-    } else {
+      const aviso = input.nextElementSibling;
+      if(aviso){
+        aviso.style.display = "none";
+      }
+    }else{
       input.classList.add("campo-nao-preenchido");
       input.classList.remove("campo-preenchido");
+      const aviso = input.nextElementSibling;
+      if(aviso){
+        if(valor === ""){
+          aviso.textContent = "O campo email deve estar preenchido";
+        }else{
+          aviso.textContent = "Formato de email inválido, ex: usuario@exemplo.com";
+        }
+        aviso.style.display = 'block';
+      }
     }
-    return; // sai da função, já tratou
+    return;
   }
 
-  // Para os demais campos, apenas checa se não está vazio
-  if (valor) {
+  // para demais campos, apenas checa se não está vazio
+  if(valor){
     input.classList.add("campo-preenchido");
     input.classList.remove("campo-nao-preenchido");
-  } else {
+    const aviso = input.nextElementSibling;
+    if(aviso){
+      aviso.style.display = "none";
+    }
+  }else{
     input.classList.add("campo-nao-preenchido");
     input.classList.remove("campo-preenchido");
-  }
-}
-
-// Exibe ou oculta mensagem de erro via nextElementSibling
-function informarCamposObrigatorios(input) {
-    const aviso = input.nextElementSibling; // pega o span de erro
-    if (!aviso) return; // se não houver span, sai
-    if (input.value.trim() === '') {
-        aviso.style.display = 'block'; // mostra o erro
-    } else {
-        aviso.style.display = 'none';  // esconde o erro
+    const aviso = input.nextElementSibling;
+    if(aviso){
+      aviso.style.display = "block";
     }
+  }
 }
